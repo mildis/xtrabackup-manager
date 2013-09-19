@@ -1,3 +1,7 @@
+#!/usr/bin/php
+<?php
+/*
+
 Copyright 2011-2012 Marin Software
 
 This file is part of XtraBackup Manager.
@@ -15,4 +19,32 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 
-See the COPYING file distributed with this software.
+*/
+
+
+	require('includes/init.php');
+
+	try {
+
+		$log = new logStream(XBM_MAIN_LOG, false, $config['LOGS']['level']);
+
+		// Create a new xbm command handler
+		$cliHandler = new cliHandler();
+		$cliHandler->setLogStream($log);
+
+		// Handle the command given
+		$cliHandler->handleArguments($argv);
+
+	} catch( InputException $e ) {
+
+		echo($e->getMessage() ."\n\n");
+
+	} catch( Exception $e ) {
+
+		echo($e->getMessage() ."\n\n");
+
+	}
+
+
+	/* vi: set filetype=php */
+?>
