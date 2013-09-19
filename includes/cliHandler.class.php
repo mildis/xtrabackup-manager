@@ -723,6 +723,7 @@ along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 						echo("  Name: ".$sbInfo['name']."  Active: ".$sbInfo['active']."  Cron_Expression: ".$sbInfo['cron_expression']."\n");
 						echo("  Backup User: ".$sbInfo['backup_user']."  Datadir: ".$sbInfo['datadir_path']."\n");
 						echo("  MySQL User: ".$sbInfo['mysql_user']."  Lock Tables: ".$sbInfo['lock_tables']."\n");
+						echo("  Extra Innobackupex Args: ".$sbInfo['extra_innobackupex_args']."\n");
 						echo("  Backup Volume: ".$volInfo['name']." ( ".$volInfo['path']." )\n");
 						echo("  Backup Strategy: ".$stratInfo['strategy_name']." ( ".$stratInfo['strategy_code']." )\n");
 						if($sbInfo['throttle'] == 0 ) {
@@ -762,6 +763,7 @@ along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 						$errMsg .= "	lock_tables - Whether FLUSH TABLES WITH READ LOCK should be used for MyISAM consistency (Y/N)\n";
 						$errMsg .= "	active - Whether this Scheduled Backup task is activated and should run (Y/N)\n";
 						$errMsg .= "	throttle - How many MB/sec to throttle this backup to (0 to disable throttling)\n";
+						$errMsg .= "	extra_args - optional extra arguments to pass to innobackupex\n";
 						$errMsg .= "\n";
 						$errMsg .= "  Backup Strategy Parameters:\n\n";
 						$errMsg .= "	FULLONLY:\n";

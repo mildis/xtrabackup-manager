@@ -701,6 +701,10 @@ along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 					self::validateThrottle($value);
 					$sql = "UPDATE scheduled_backups SET throttle=".$value." WHERE scheduled_backup_id=".$this->id;
 				break;
+				case 'extra_args':
+				  //garbage in, garbage out....
+					$sql = "UPDATE scheduled_backups SET extra_innobackupex_args='".$conn->real_escape_string($value)."' WHERE scheduled_backup_id=".$this->id;
+				break;
 
 				//
 				// Handle the parameters specific to the backup strategy of this backup //

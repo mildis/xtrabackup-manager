@@ -29,7 +29,7 @@ along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 	define('XBM_LOG_ERROR', 2);
 
 	// Define the required schema verions
-	define('XBM_SCHEMA_VERSION', 1006);
+	define('XBM_SCHEMA_VERSION', 1007);
 
 	// Number of seconds we sleep between checking stuff
 	// Usually to see if we can run the backup 

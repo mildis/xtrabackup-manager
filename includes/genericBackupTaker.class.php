@@ -162,7 +162,7 @@ along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 					// Build the command...
 					$xbCommand = 'ssh -o StrictHostKeyChecking=no -p '.$hostInfo['ssh_port'].' '.$sbInfo['backup_user'].'@'.$hostInfo['hostname'].
 								" 'cd $tempDir ; innobackupex --ibbackup=".$xbBinary." --stream=tar ".$sbInfo['datadir_path']." --user=".$sbInfo['mysql_user'].
-								" --password=".$sbInfo['mysql_password']." --slave-info --safe-slave-backup --tmpdir=".$tempDir;
+								" --password=".$sbInfo['mysql_password']." --slave-info --safe-slave-backup --tmpdir=".$tempDir." ".$sbInfo['extra_innobackupex_args'];
 			
 					// If table locking for the backup is disabled add the --no-lock option to innobackupex
 					if($sbInfo['lock_tables'] == 'N') {
@@ -431,7 +431,7 @@ along with XtraBackup Manager.  If not, see <http://www.gnu.org/licenses/>.
 					$xbCommand = "ssh -o StrictHostKeyChecking=no -p ".$hostInfo['ssh_port']." ".$sbInfo['backup_user']."@".$hostInfo['hostname'].
 								" 'cd $tempDir ; innobackupex --ibbackup=".$xbBinary." --slave-info --incremental-lsn=".$lsn." ".$tempDir."/deltas".
 								" --user=".$sbInfo['mysql_user']." --safe-slave-backup ".
-								" --password=".$sbInfo['mysql_password']." --no-timestamp --incremental --throttle=".$scheduledBackup->getXtraBackupThrottleValue()." 1>&2 '";
+								" --password=".$sbInfo['mysql_password']." --no-timestamp --incremental --throttle=".$scheduledBackup->getXtraBackupThrottleValue()." ".$sbInfo['extra_innobackupex_args']." 1>&2 '";
 					
 					// Set up how we'll interact with the IO file handlers of the process
 					$xbDescriptors = Array(

@@ -208,6 +208,7 @@ CREATE TABLE `scheduled_backups` (
   `mysql_type_id` int(10) unsigned default NULL,
   `backup_strategy_id` int(10) unsigned NOT NULL default '1',
   `throttle` int(10) unsigned NOT NULL default 0,
+  `extra_innobackupex_args` varchar(1024) NOT NULL default '',
   PRIMARY KEY  (`scheduled_backup_id`),
   UNIQUE KEY `i_host_name` (`name`,`host_id`),
   KEY `i_host` (`host_id`)
@@ -265,7 +266,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `schema_version` WRITE;
 /*!40000 ALTER TABLE `schema_version` DISABLE KEYS */;
-INSERT INTO `schema_version` VALUES (1006);
+INSERT INTO `schema_version` VALUES (1007);
 /*!40000 ALTER TABLE `schema_version` ENABLE KEYS */;
 UNLOCK TABLES;
 
